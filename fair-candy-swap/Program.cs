@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 /*
  * @lc app=leetcode id=888 lang=csharp
@@ -89,9 +90,11 @@ namespace fair_candy_swap
     {
         static void Main(string[] args)
         {
-            var A = new int[] { 1, 2, 5 };
+            var A = new int[] { -1, 0, 1, 2, -1, -4 };
             var B = new int[] { 2, 4 };
-            Console.WriteLine("sonuc:" + FairCandySwap(A, B)[1]);
+            //Console.WriteLine("sonuc:" + FairCandySwap(A, B)[1]);
+
+            Console.WriteLine("sonuc1:" + ThreeSum(A)[1][0]);
         }
 
         public static int[] FairCandySwap(int[] A, int[] B)
@@ -124,6 +127,26 @@ namespace fair_candy_swap
                         result[0] = Ai;
                         result[1] = By;
                         return result;
+                    }
+                }
+            }
+            return result;
+        }
+
+        public static List<List<int>> ThreeSum(int[] nums)
+        {
+            var result = new List<List<int>>();
+            for (int x = 0; x < nums.Length; x++)
+            {
+                for (int y = 0; y < nums.Length; y++)
+                {
+                    for (int z = 0; z < nums.Length; z++)
+                    {
+                        var sumAll = nums[x] + nums[y] + nums[z];
+                        if (sumAll == 0)
+                        {
+                            result.Add(new List<int>() { nums[x], nums[y], nums[z] });
+                        }
                     }
                 }
             }
